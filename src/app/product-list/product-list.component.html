@@ -1,9 +1,8 @@
-<h2>Products</h2>
+<h2>Entregas</h2>
 
-<div *ngFor="let product of products">
-
+<div *ngFor="let product of products; index as productId">
   <h3>
-    <a [title]="product.name + ' details'">
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
       {{ product.name }}
     </a>
   </h3>
@@ -11,31 +10,37 @@
   <p *ngIf="product.description">
     Description: {{ product.description }}
   </p>
+  <a *ngIf="product.bolson>0" style="font-size:30px">
+    &#9749; {{ product.bolson }}
+  </a>
+  <a *ngIf="product.miel>0" style="font-size:30px">
+    &#9749; {{ product.miel }}
+  </a>
+  <a *ngIf="product.tinto>0" style="font-size:30px">
+    &#9749; {{ product.tinto }}
+  </a>
+  <a *ngIf="product.blanco>0" style="font-size:30px">
+    &#9749; {{ product.blanco }}
+  </a>
+  <a *ngIf="product.yerba>0" style="font-size:30px">
+    &#9749; {{ product.yerba }}
+  </a>
+  <a *ngIf="product.huevos>0" style="font-size:30px">
+    &#9749; {{ product.huevos }}
+  </a>
+  <a *ngIf="product.donacion>0" style="font-size:30px">
+    &#9749; {{ product.donacion }}
+  </a>
+  <p *ngIf="product.total>0" style="font-size:30px">
+    {{ product.total | currency}}
+  </p>
 
-  <a> <span style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f4e6.svg);">&nbsp;</span>
-  s </a>
-  <a> &#x1F36F; </a>
-  <a> s </a>
-  <a> s </a>
-  <a> s </a>
-
-  <p style="font-size:30px">
-&#127855; &#127863; &#127864; &#127890; &#9749; &#129370; &#128178;&#128181;
-</p>
-
-  <p><span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f4e6.svg);">&nbsp;</span> 0 <span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f366.svg);">&nbsp;</span> 0 <span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f351.svg);">&nbsp;</span> 0 <span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f35e.svg);">&nbsp;</span> 0 <span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f356.svg);">&nbsp;</span> 0 <span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f373.svg);">&nbsp;</span> 0 <span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f354.svg);">&nbsp;</span> 0</p><p><span class="fr-emoticon fr-deletable fr-emoticon-img" style="background: url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.0.1/assets/svg/1f4b2.svg);">&nbsp;</span> 1200
-
-
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
 
   <button (click)="share()">
     WhatsApp
   </button>
-
-  <app-product-alerts
-    [product]="product" 
-    (notify)="onNotify()">
-  </app-product-alerts>
-
 </div>
 
 <!-- 
