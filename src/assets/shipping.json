@@ -1,14 +1,17 @@
 [
   {
     "type": "Overnight",
-    "price": 25.99
+    "price": 25.99,
+    "location": "AMBA"
   },
   {
     "type": "2-Day",
-    "price": 9.99
+    "price": 9.99,
+    "location": "GBA"
   },
   {
     "type": "Postal",
-    "price": 2.99
+    "price": 2.8,
+    "location": "CABA"
   }
 ]
