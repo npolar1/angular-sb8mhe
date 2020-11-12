@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
 import { products } from '../products';
+import { CartService } from "../cart.service";
 
 @Component({
   selector: 'app-product-list',
@@ -8,8 +8,13 @@ import { products } from '../products';
   styleUrls: ['./product-list.component.css']
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
   products = products;
+  ordersList;
+
+  constructor(private cartService: CartService) {
+    this.ordersList = this.cartService.getOrdersList();
+  }
 
   share() {
     window.alert('The product has been shared!');
@@ -18,6 +23,7 @@ export class ProductListComponent {
   onNotify() {
     window.alert('You will be notified when the product goes on sale');
   }
+
 }
 
 

@@ -5,3 +5,7 @@
   <span>{{ shipping.price | currency }}</span>
   <span>{{ shipping.location }}</span>
 </div>
+
+<div class="shipping-item" *ngFor="let order of ordersList | async">
+  <span>{{ order.Nombre }}</span>
+</div>

@@ -1,11 +1,28 @@
-<h2>Entregas</h2>
+<h2>Ordenes</h2>
 
-<div *ngFor="let product of products; index as productId">
+<div *ngFor="let order of ordersList | async; index as orderId">
   <h3>
-    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
-      {{ product.name }}
+    <a [routerLink]="['/products', orderId]">
+      {{ order.Nombre | titlecase }}
     </a>
   </h3>
+  <p *ngIf="order.Bolson>0" style="font-size:30px" font face="Segoe UI Symbol">
+    &#127881; {{ order.Bolson }}
+  </p>
+
+  <i class="fas fa-band-aid">s</i>
+  <i class="fas fa-shopping-bag"></i>
+
+
+    <p *ngIf="order.MONTO>0" style="font-size:30px">
+    {{ order.MONTO | currency}}
+  </p>
+
+
+</div>
+
+<div *ngFor="let product of products; index as productId">
+
 
   <p *ngIf="product.description">
     Description: {{ product.description }}
