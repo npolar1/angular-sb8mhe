@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { products } from '../products';
 import { CartService } from "../cart.service";
+import { FirestoreService } from '../../services/firestore.service';
 
 @Component({
   selector: 'app-product-list',
@@ -8,11 +9,14 @@ import { CartService } from "../cart.service";
   styleUrls: ['./product-list.component.css']
 })
 
-export class ProductListComponent implements OnInit{
+export class ProductListComponent{
   products = products;
   ordersList;
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private cartService: CartService, 
+    private firestoreService: FirestoreService
+  ) {
     this.ordersList = this.cartService.getOrdersList();
   }
 

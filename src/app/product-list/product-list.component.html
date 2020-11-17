@@ -1,63 +1,72 @@
 <h2>Ordenes</h2>
 
 <div *ngFor="let order of ordersList | async; index as orderId">
-  <h3>
-    <a [routerLink]="['/products', orderId]">
-      {{ order.Nombre | titlecase }}
-    </a>
-  </h3>
-  <p *ngIf="order.Bolson>0" style="font-size:30px" font face="Segoe UI Symbol">
-    &#127881; {{ order.Bolson }}
+	<h3>
+		<a [routerLink]="['/order', orderId]">
+			{{ order.Nombre | titlecase }}
+		</a>
+	</h3>
+
+	<a *ngIf="order.Bolson>0" style="font-size:30px">
+		<span class="material-icons">
+      shopping_bag
+      </span>
+		{{ order.Bolson }}
+	</a>
+
+	<a *ngIf="order.Miel>0" style="font-size:30px">
+
+		<span class="material-icons md-light">
+    local_drink
+    </span>
+        {{ order.Miel }}
+      </a>
+
+	<a *ngIf="order.Tinto>0" style="font-size:30px">
+
+		<span class="material-icons md-light md-inactive">
+local_drink
+</span>
+		{{ order.Tinto }}
+	</a>
+
+	<a *ngIf="order.Blanco>0" style="font-size:30px">
+
+		<span class="material-icons md-light md-inactive">
+local_cafe
+</span>
+		{{ order.Blanco }}
+	</a>
+	<a *ngIf="order.Yerba>0" style="font-size:30px">
+
+		<span class="material-icons md-light md-inactive">
+local_bar
+</span>
+		{{ order.Yerba }}
+	</a>
+
+	<a *ngIf="order.Huevos>0" style="font-size:30px">
+
+		<span class="material-icons md-light md-inactive">
+local_bar
+</span>
+		{{ order.Huevos }}
+	</a>
+
+	<p *ngIf="order.Campana>0" style="font-size:15px">
+		 + {{ order.Campana | currency}} donación
+	</p>
+
+	<p *ngIf="order.MONTO>0" style="font-size:30px">
+		{{ order.MONTO | currency}}
+	</p>
+
+  <p>
+  <button (click)="onNotify()">Completo</button>
+  <button (click)="onNotify()">Parcial</button>
+  <button (click)="share()">WhatsApp</button>
   </p>
 
-  <i class="fas fa-band-aid">s</i>
-  <i class="fas fa-shopping-bag"></i>
-
-
-    <p *ngIf="order.MONTO>0" style="font-size:30px">
-    {{ order.MONTO | currency}}
-  </p>
-
-
-</div>
-
-<div *ngFor="let product of products; index as productId">
-
-
-  <p *ngIf="product.description">
-    Description: {{ product.description }}
-  </p>
-  <a *ngIf="product.bolson>0" style="font-size:30px">
-    &#9749; {{ product.bolson }}
-  </a>
-  <a *ngIf="product.miel>0" style="font-size:30px">
-    &#9749; {{ product.miel }}
-  </a>
-  <a *ngIf="product.tinto>0" style="font-size:30px">
-    &#9749; {{ product.tinto }}
-  </a>
-  <a *ngIf="product.blanco>0" style="font-size:30px">
-    &#9749; {{ product.blanco }}
-  </a>
-  <a *ngIf="product.yerba>0" style="font-size:30px">
-    &#9749; {{ product.yerba }}
-  </a>
-  <a *ngIf="product.huevos>0" style="font-size:30px">
-    &#9749; {{ product.huevos }}
-  </a>
-  <a *ngIf="product.donacion>0" style="font-size:30px">
-    &#9749; {{ product.donacion }}
-  </a>
-  <p *ngIf="product.total>0" style="font-size:30px">
-    {{ product.total | currency}}
-  </p>
-
-  <app-product-alerts [product]="product" (notify)="onNotify()">
-  </app-product-alerts>
-
-  <button (click)="share()">
-    WhatsApp
-  </button>
 </div>
 
 <!-- 
